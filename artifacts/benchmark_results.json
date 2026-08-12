@@ -3,7 +3,7 @@
     "total": 20,
     "passed": 10,
     "pass_rate": 0.5,
-    "avg_faithfulness": 0.7034961272239085,
+    "avg_faithfulness": 0.7148597635875449,
     "avg_relevance": 0.6105887825624667,
     "avg_completeness": 0.5793664462685059,
     "avg_context_recall": 0.8729580016072676,
@@ -131,12 +131,12 @@
       "difficulty": "medium",
       "question": "If I leave a Fall 2026 course after the census date, what appears on my record and what is the last day to do it?",
       "actual_answer": "If you leave a Fall 2026 course after the census date (September 4), a `W` grade will appear on your record. The last day to withdraw from a course with a `W` grade is October 30.",
-      "faithfulness": 0.45454545454545453,
+      "faithfulness": 0.6818181818181818,
       "relevance": 0.6875,
       "completeness": 0.4444444444444444,
       "context_recall": 1.0,
       "context_precision": 1.0,
-      "overall": 0.5288299663299664,
+      "overall": 0.6045875420875421,
       "passed": false,
       "failure_type": "off_topic"
     },
@@ -305,6 +305,6 @@
       "Implement a grounding checker that rejects claims whose tokens are absent from the retrieved contexts",
       "Rerank retrieved chunks by query overlap to lift Context Precision without changing the retrieved set"
     ],
-    "improvement_log": "| Failure ID | Type | Root Cause | Suggested Fix | Status |\n|------------|------|------------|---------------|--------|\n| F001 | off_topic | Answer is missing key information — increase context window or improve generation | Add intent routing so scope, calendar, and finance questions hit the right document set | Open |\n| F002 | off_topic | Answer is missing key information — increase context window or improve generation | Implement a grounding checker that rejects claims whose tokens are absent from the retrieved contexts | Open |\n| F003 | off_topic | Answer does not address the question — improve prompt clarity | Rerank retrieved chunks by query overlap to lift Context Precision without changing the retrieved set | Open |\n| F004 | off_topic | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |\n| F005 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |\n| F006 | off_topic | Answer does not address the question — improve prompt clarity | Review pipeline stage identified by the root cause | Open |\n| F007 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |\n| F008 | hallucination | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |\n| F009 | hallucination | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |\n| F010 | hallucination | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |"
+    "improvement_log": "| Failure ID | Type | Root Cause | Suggested Fix | Status |\n|------------|------|------------|---------------|--------|\n| F001 | off_topic | Answer is missing key information — increase context window or improve generation | Add intent routing so scope, calendar, and finance questions hit the right document set | Open |\n| F002 | off_topic | Answer is missing key information — increase context window or improve generation | Implement a grounding checker that rejects claims whose tokens are absent from the retrieved contexts | Open |\n| F003 | off_topic | Answer does not address the question — improve prompt clarity | Rerank retrieved chunks by query overlap to lift Context Precision without changing the retrieved set | Open |\n| F004 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |\n| F005 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |\n| F006 | off_topic | Answer does not address the question — improve prompt clarity | Review pipeline stage identified by the root cause | Open |\n| F007 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |\n| F008 | hallucination | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |\n| F009 | hallucination | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |\n| F010 | hallucination | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |"
   }
 }

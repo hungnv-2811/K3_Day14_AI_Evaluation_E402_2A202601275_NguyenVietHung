@@ -18,21 +18,21 @@ answer/context trace trong `artifacts/actual_answers.json` trước khi kết lu
 |---|---:|---:|---:|---|
 | Context Recall | 0.873 | 0.161 (A01) | 1.000 (11 cases) | Retriever lấy được gần hết bằng chứng cần thiết. Hai điểm sụt duy nhất là A01 (0.161) và A03 (0.356) — cả hai đều là adversarial cần `00_system_scope.md`. |
 | Context Precision | 0.911 | 0.000 (A01) | 1.000 (14 cases) | Ranking tốt: 18/20 case ở band Good. A01 = 0.000 nghĩa là **không một chunk nào** trong top-5 chạm ngưỡng relevant. |
-| Faithfulness | 0.703 | 0.059 (A01) | 1.000 (E01, E02) | Trung bình bị kéo xuống bởi đúng ba case adversarial. Bỏ A01–A03 ra thì trung bình 17 case còn lại là **0.797**. |
+| Faithfulness | 0.715 | 0.059 (A01) | 1.000 (E01, E02) | Trung bình bị kéo xuống bởi đúng ba case adversarial. Bỏ A01–A03 ra thì trung bình 17 case còn lại là **0.810**. |
 | Relevance | 0.611 | 0.067 (A01) | 0.889 (H03) | Metric nhiễu nhất: phạt câu trả lời cô đọng không lặp từ vựng câu hỏi (M02 = 0.312 dù nội dung đúng hoàn toàn). |
 | Completeness | 0.579 | 0.032 (A01) | 1.000 (E01, E02) | **Metric yếu nhất và là vấn đề thật.** 11/20 case dưới 0.6. Đây là chỗ hệ thống thực sự mất điểm. |
-| Overall Score | 0.631 | 0.053 (A01) | 0.939 (E02) | 3 Good / 10 Needs work / 7 Significant issues. |
+| Overall Score | 0.635 | 0.053 (A01) | 0.939 (E02) | 3 Good / 11 Needs work / 6 Significant issues. |
 
 **Score interpretation**
 
 - Metrics/cases ở mức Good (0.8–1.0): **Metrics:** Context Recall (0.873),
   Context Precision (0.911). **Cases:** E01 (0.889), E02 (0.939), H04 (0.830).
-- Metrics/cases ở mức Needs Work (0.6–0.8): **Metrics:** Faithfulness (0.703),
-  Relevance (0.611), Overall (0.631). **Cases:** E03, E04, E05, M03, M06, M07,
-  H01, H02, H03, H05 — 10 case, nhóm lớn nhất.
+- Metrics/cases ở mức Needs Work (0.6–0.8): **Metrics:** Faithfulness (0.715),
+  Relevance (0.611), Overall (0.635). **Cases:** E03, E04, E05, M03, M04, M06,
+  M07, H01, H02, H03, H05 — 11 case, nhóm lớn nhất.
 - Metrics/cases ở mức Significant Issues (<0.6): **Metric:** Completeness
-  (0.579). **Cases:** M01 (0.571), M02 (0.559), M04 (0.529), M05 (0.546),
-  A01 (0.053), A02 (0.224), A03 (0.382).
+  (0.579). **Cases:** M01 (0.571), M02 (0.559), M05 (0.546), A01 (0.053),
+  A02 (0.224), A03 (0.382).
 
 **Failure type distribution**
 
@@ -78,7 +78,7 @@ Dùng ít nhất hai metrics để bảo vệ kết luận.
 >
 > **Bằng chứng 2 — cặp (Context Precision, Faithfulness) không mâu thuẫn.**
 > Precision trung bình 0.911 và Faithfulness của 17 case non-adversarial là
-> 0.797. Ranking tốt và câu trả lời có grounding, tức là generator **không** bịa
+> 0.810. Ranking tốt và câu trả lời có grounding, tức là generator **không** bịa
 > — nó chỉ nói ít. Đây là chân dung của một hệ thống bị tối ưu quá tay cho sự cô
 > đọng, chứ không phải hệ thống ảo giác.
 >
@@ -360,7 +360,7 @@ Paste output của `generate_improvement_log()`:
 | F001 | off_topic | Answer is missing key information — increase context window or improve generation | Add intent routing so scope, calendar, and finance questions hit the right document set | Open |
 | F002 | off_topic | Answer is missing key information — increase context window or improve generation | Implement a grounding checker that rejects claims whose tokens are absent from the retrieved contexts | Open |
 | F003 | off_topic | Answer does not address the question — improve prompt clarity | Rerank retrieved chunks by query overlap to lift Context Precision without changing the retrieved set | Open |
-| F004 | off_topic | Multiple issues detected — review full pipeline | Review pipeline stage identified by the root cause | Open |
+| F004 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |
 | F005 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |
 | F006 | off_topic | Answer does not address the question — improve prompt clarity | Review pipeline stage identified by the root cause | Open |
 | F007 | off_topic | Answer is missing key information — increase context window or improve generation | Review pipeline stage identified by the root cause | Open |
@@ -557,9 +557,9 @@ Evaluate → Analyze → Improve → Augment benchmark → Repeat
 >
 > **(3) Bất ngờ lớn nhất: LLM judge pass 100%.** Tôi kỳ vọng judge sẽ nghiêm
 > khắc hơn heuristic từ vựng. Thực tế nó cho trung bình 0.985, không đánh trượt
-> case nào, và tương quan với lexical core là **-0.025** — tức gần như ngẫu
+> case nào, và tương quan với lexical core là **-0.190** — tức gần như ngẫu
 > nhiên. Tệ hơn, ở phép thử A/B đảo thứ tự, judge chọn bản *thêm một đoạn văn
-> rỗng* **6/6 lần**, dù rubric của tôi ghi rõ "Do NOT reward length". Nếu tôi
+> rỗng* **5/6 lần**, dù rubric của tôi ghi rõ "Do NOT reward length". Nếu tôi
 > dùng judge này làm CI gate, **không một lỗi nào bị chặn** — kể cả A03, case mà
 > tôi cho là nguy hiểm nhất, được chấm 1.000/1.000. Từ đó tôi rút ra: một judge
 > **reference-free** đo *tính hợp lý*, không đo *tính đúng*; và niềm tin vào

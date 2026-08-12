@@ -77,17 +77,24 @@ Ba bias thường gặp:
 > | Kết quả | Số case |
 > |---|---:|
 > | Slot đầu thắng ở cả hai thứ tự (position bias) | 0/6 |
-> | Bản padded thắng ở cả hai thứ tự (verbosity bias) | **6/6** |
+> | Bản padded thắng ở cả hai thứ tự (verbosity bias) | **5/6** |
 >
 > Kết luận: judge này **không** có position bias rõ rệt, nhưng có verbosity bias
-> gần như tuyệt đối.
+> rất mạnh.
+>
+> **Một quan sát ngoài dự kiến:** tôi chạy lại đúng thí nghiệm này lần thứ hai
+> với cùng `temperature=0` và cùng input, kết quả verbosity đổi từ 6/6 thành
+> **5/6**. Vậy `temperature=0` **không** đảm bảo determinism ở phía API. Hệ quả
+> cho thiết kế evaluation: một LLM judge không thể dùng làm blocking gate nếu
+> chưa đo được độ dao động giữa các lần chạy — phải chạy lặp n lần và báo cáo
+> khoảng dao động, thay vì tin vào một con số duy nhất.
 
 **Câu 2: Làm thế nào giảm verbosity bias bằng rubric design?**
 
 > *Câu trả lời:*
 >
 > Bằng chứng từ lab: rubric của tôi đã ghi thẳng `Do NOT reward length` trong
-> judge prompt, vậy mà bản padded vẫn thắng 6/6. **Một câu cấm bằng chữ là không
+> judge prompt, vậy mà bản padded vẫn thắng 5/6. **Một câu cấm bằng chữ là không
 > đủ** — phải đổi cấu trúc chấm:
 >
 > 1. **Rubric theo checklist đơn vị thông tin, không theo cảm nhận "đầy đủ".**
@@ -112,7 +119,7 @@ Ba bias thường gặp:
 > Vì nếu không calibrate thì **không có cách nào biết judge đang sai**. Trong
 > run thật của tôi, judge `gpt-4o-mini` cho pass rate **100%** (avg 0.985) trên
 > đúng bộ 20 answers mà lexical core chỉ pass 50%, và tương quan Pearson giữa
-> hai bên là **-0.025** — tức là judge gần như không phân biệt được case tốt và
+> hai bên là **-0.190** — tức là judge gần như không phân biệt được case tốt và
 > case xấu. `detect_bias()` cũng gắn cờ `leniency_bias = True`. Nếu tôi dùng
 > judge này làm CI gate thì không lỗi nào bị chặn.
 >
@@ -127,7 +134,7 @@ Ba bias thường gặp:
 
 | Metric | Threshold | Lý do |
 |---|---:|---|
-| Faithfulness | 0.70 | Grounding là rủi ro cao nhất trong domain này: một policy bịa về tiền hoặc deadline gây thiệt hại thật. Ngưỡng đặt ngang mức "Needs work" cao để không cho merge khi có dấu hiệu bịa. Baseline hiện tại 0.703 → hệ thống đang *sát* gate, đúng tinh thần cảnh báo sớm. |
+| Faithfulness | 0.70 | Grounding là rủi ro cao nhất trong domain này: một policy bịa về tiền hoặc deadline gây thiệt hại thật. Ngưỡng đặt ngang mức "Needs work" cao để không cho merge khi có dấu hiệu bịa. Baseline hiện tại 0.715 → hệ thống đang *sát* gate, đúng tinh thần cảnh báo sớm. |
 | Answer Relevance | 0.55 | Heuristic word-overlap phạt oan câu trả lời đúng nhưng cô đọng (M02 = 0.312 dù nội dung chuẩn). Đặt ngưỡng thấp hơn để tránh chặn nhầm, và bù bằng alert + review thủ công trong khoảng 0.55–0.65. Baseline 0.611. |
 | Completeness | 0.60 | Thiếu một điều kiện hoặc ngoại lệ khiến sinh viên hành động sai, nhưng metric này cũng nhiễu nhất theo độ dài. 0.60 là mức chấp nhận được cho gate cứng; phần còn lại giao cho rubric review. Baseline 0.579 → **hiện tại đang fail gate**, phải sửa generation trước khi deploy. |
 
@@ -314,7 +321,7 @@ Run thật: model `gpt-4o-mini`, `top_k=5`, 20/20 answers sinh thành công, `er
 | M01 | Unpaid balance → fee + registration hold | 0.822 | 0.867 | 0.643 | 0.625 | 0.444 | 0.571 | No | off_topic |
 | M02 | Late add: approvals, fee, late payment | 0.972 | 1.000 | 0.864 | 0.312 | 0.500 | 0.559 | No | off_topic |
 | M03 | Scholarship renewal terms + criteria | 1.000 | 1.000 | 0.667 | 0.583 | 0.811 | 0.687 | Yes | — |
-| M04 | Leaving a course after census (W) | 1.000 | 1.000 | 0.455 | 0.688 | 0.444 | 0.529 | No | off_topic |
+| M04 | Leaving a course after census (W) | 1.000 | 1.000 | 0.682 | 0.688 | 0.444 | 0.605 | No | off_topic |
 | M05 | Refund on Aug 25 vs Sep 2 | 0.821 | 0.950 | 0.615 | 0.667 | 0.357 | 0.546 | No | off_topic |
 | M06 | Grade appeal: first step, deadline, grounds | 1.000 | 1.000 | 0.897 | 0.375 | 0.875 | 0.716 | No | off_topic |
 | M07 | Internship before/after placement | 1.000 | 1.000 | 0.913 | 0.818 | 0.636 | 0.789 | Yes | — |
@@ -332,7 +339,7 @@ Run thật: model `gpt-4o-mini`, `top_k=5`, 20/20 answers sinh thành công, `er
 - Overall pass rate: **50.0%** (10/20)
 - Avg Context Recall: **0.873**
 - Avg Context Precision: **0.911**
-- Avg Faithfulness: **0.703**
+- Avg Faithfulness: **0.715**
 - Avg Relevance: **0.611**
 - Avg Completeness: **0.579**
 - Failure type distribution: **`{'off_topic': 7, 'hallucination': 3}`**
@@ -342,8 +349,8 @@ Phân bố theo band điểm (theo `overall`):
 | Band | Số case | IDs |
 |---|---:|---|
 | Good (0.8–1.0) | 3 | E01, E02, H04 |
-| Needs work (0.6–0.8) | 10 | E03, E04, E05, M03, M06, M07, H01, H02, H03, H05 |
-| Significant issues (< 0.6) | 7 | M01, M02, M04, M05, A01, A02, A03 |
+| Needs work (0.6–0.8) | 11 | E03, E04, E05, M03, M04, M06, M07, H01, H02, H03, H05 |
+| Significant issues (< 0.6) | 6 | M01, M02, M05, A01, A02, A03 |
 
 **Ba cases có Overall Score thấp nhất**
 
@@ -427,7 +434,7 @@ verbosity bias và self-preference bằng cách nào?
 >   answer) thay vì pairwise là mặc định. Khi buộc phải so sánh cặp thì chạy
 >   counterbalanced A/B swap và chỉ nhận kết quả khi cả hai thứ tự đồng thuận.
 >   Đo thực tế: 0/6 case có position bias.
-> - **Verbosity bias:** đây là bias tôi *đo được* và nó nghiêm trọng — 6/6 case
+> - **Verbosity bias:** đây là bias tôi *đo được* và nó nghiêm trọng — 5/6 case
 >   bản padded thắng dù rubric ghi rõ "Do NOT reward length". Biện pháp: chấm
 >   theo **checklist required elements** (đếm được) thay vì cảm nhận "đầy đủ";
 >   thêm mục trừ điểm cho câu không có evidence; chuẩn hóa độ dài trước khi
@@ -464,7 +471,7 @@ Chạy bằng: `python bonus_experiments.py --with-judge` → `artifacts/bonus_r
 | Setup complexity | Rất thấp: thuần Python, không dependency ngoài, không key. Chạy 20 case < 0.1s. Nhưng phải **tự viết golden expected answers**, và đó mới là chi phí thật. | Trung bình: cần API key, chọn model, thiết kế rubric, xử lý parse JSON lỗi và retry. 20 case ≈ 35s và tốn tiền. Đổi lại không cần expected answer. |
 | Metrics available | 5 metrics: 3 answer-side + 2 retrieval-side (Recall, AP@K Precision). Không đo được safety, tone, false-premise. | Bao nhiêu dimension tùy rubric — tôi dùng 5, gồm cả **scope & safety** và **grounding** mà framework 1 không biểu diễn được. Không tự có retrieval metrics trừ khi truyền context vào. |
 | CI/CD integration | Lý tưởng: deterministic, chạy offline, chi phí 0, dễ đặt gate cứng và diff giữa hai commit. Chính là thứ tôi để làm blocking gate. | Khó làm gate cứng: phi deterministic, tốn tiền, phụ thuộc uptime API, và điểm dịch khi provider đổi model. Phù hợp làm **advisory check** hoặc chạy trên tập nhỏ. |
-| Kết quả trên cùng dataset | Avg overall **0.631**, pass rate **50.0%** (10/20). Fail: E05, M01, M02, M04, M05, M06, H01, A01, A02, A03. | Avg overall **0.985**, pass rate **100.0%** (20/20). Fail: **không case nào**. `detect_bias()` → `leniency_bias = True`. |
+| Kết quả trên cùng dataset | Avg overall **0.635**, pass rate **50.0%** (10/20). Fail: E05, M01, M02, M04, M05, M06, H01, A01, A02, A03. | Avg overall **0.985**, pass rate **100.0%** (20/20). Fail: **không case nào**. `detect_bias()` → `leniency_bias = True`. |
 | Insight rút ra | Đo được cái *thiếu* so với ground truth, nhưng không đo được cái *đúng về hành vi*: phạt nặng lời từ chối ngắn (A02 = 0.224) dù hành vi chuẩn. | Nhận ra A02 từ chối đúng (0.950–1.000), nhưng **không nhận ra bất kỳ thiếu sót nào** vì không có reference để biết cái gì đáng lẽ phải có. Reference-free ⇒ đo tính *hợp lý*, không đo tính *đúng*. |
 
 - Scores có nhất quán không?
@@ -474,7 +481,10 @@ Chạy bằng: `python bonus_experiments.py --with-judge` → `artifacts/bonus_r
 > *Phân tích:*
 >
 > **Nhất quán: hầu như không.** Tương quan Pearson giữa hai overall score là
-> **-0.025** — thực tế là không tương quan. Pass/fail agreement chỉ **50%**, và
+> **-0.190** — thực tế là không tương quan (lần chạy trước cho -0.025 với cùng
+> input và `temperature=0`; xem ghi chú về tính bất định của judge ở Exercise
+> 1.2 — bản thân độ dao động này đã đủ để loại judge khỏi vai trò blocking gate).
+> Pass/fail agreement chỉ **50%**, và
 > toàn bộ phần bất đồng đến từ một phía: **10 case bị lexical core đánh trượt
 > nhưng judge cho đỗ** (E05, M01, M02, M04, M05, M06, H01, A01, A02, A03), và
 > **0 case ngược lại**. Không có case nào cả hai cùng đánh trượt.
@@ -485,7 +495,7 @@ Chạy bằng: `python bonus_experiments.py --with-judge` → `artifacts/bonus_r
 >    nên đo được phần *bị thiếu*; judge reference-free chỉ thấy một câu trả lời
 >    trôi chảy, hợp lý, không mâu thuẫn → chấm cao. Đây là nguyên nhân chính.
 > 2. **Judge bị leniency + verbosity bias.** `detect_bias()` gắn cờ leniency
->    (avg 0.985), và probe riêng cho thấy judge chọn bản padded 6/6.
+>    (avg 0.985), và probe riêng cho thấy judge chọn bản padded 5/6.
 > 3. **Self-preference.** Judge và generator cùng là `gpt-4o-mini`; văn phong
 >    cô đọng của answer chính là văn phong judge ưa thích.
 >

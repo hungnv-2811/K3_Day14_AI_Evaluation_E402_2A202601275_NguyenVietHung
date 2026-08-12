@@ -361,7 +361,7 @@
       {
         "id": "M04",
         "difficulty": "medium",
-        "lexical_overall": 0.5288299663299664,
+        "lexical_overall": 0.6045875420875421,
         "lexical_passed": false,
         "judge_scores": {
           "policy_correctness": 1.0,
@@ -454,13 +454,13 @@
         "lexical_overall": 0.7275462962962962,
         "lexical_passed": true,
         "judge_scores": {
-          "policy_correctness": 1.0,
+          "policy_correctness": 0.75,
           "condition_completeness": 0.75,
-          "grounding": 1.0,
+          "grounding": 0.75,
           "scope_and_safety": 1.0,
           "actionability": 1.0
         },
-        "judge_overall": 0.95,
+        "judge_overall": 0.85,
         "judge_passed": true
       },
       {
@@ -469,13 +469,13 @@
         "lexical_overall": 0.8300207039337474,
         "lexical_passed": true,
         "judge_scores": {
-          "policy_correctness": 0.75,
+          "policy_correctness": 1.0,
           "condition_completeness": 0.75,
           "grounding": 1.0,
           "scope_and_safety": 1.0,
           "actionability": 1.0
         },
-        "judge_overall": 0.9,
+        "judge_overall": 0.95,
         "judge_passed": true
       },
       {
@@ -503,9 +503,9 @@
           "condition_completeness": 1.0,
           "grounding": 1.0,
           "scope_and_safety": 1.0,
-          "actionability": 0.75
+          "actionability": 1.0
         },
-        "judge_overall": 0.95,
+        "judge_overall": 1.0,
         "judge_passed": true
       },
       {
@@ -541,12 +541,12 @@
     ],
     "summary": {
       "model": "gpt-4o-mini",
-      "avg_lexical_overall": 0.6311504520182938,
+      "avg_lexical_overall": 0.6349383308061725,
       "avg_judge_overall": 0.985,
       "lexical_pass_rate": 0.5,
       "judge_pass_rate": 1.0,
       "pass_fail_agreement": 0.5,
-      "correlation": -0.02454564249267541,
+      "correlation": -0.18958421766065642,
       "lexical_only_failures": [
         "A01",
         "A02",
@@ -573,7 +573,7 @@
       {
         "id": "E01",
         "concise_first_winner": "padded",
-        "padded_first_winner": "padded"
+        "padded_first_winner": "concise"
       },
       {
         "id": "E02",
@@ -605,7 +605,7 @@
       "model": "gpt-4o-mini",
       "cases": 6,
       "position_bias_cases": 0,
-      "verbosity_bias_cases": 6
+      "verbosity_bias_cases": 5
     }
   }
 }
