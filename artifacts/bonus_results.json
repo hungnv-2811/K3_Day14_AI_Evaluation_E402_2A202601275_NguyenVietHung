@@ -1,0 +1,611 @@
+{
+  "exercise_3_5_reranking": {
+    "rows": [
+      {
+        "id": "E01",
+        "difficulty": "easy",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "E02",
+        "difficulty": "easy",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "E03",
+        "difficulty": "easy",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 0.8875,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.11250000000000004,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "E04",
+        "difficulty": "easy",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": false,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "E05",
+        "difficulty": "easy",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 0.95,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.050000000000000044,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "M01",
+        "difficulty": "medium",
+        "recall_before": 0.8222222222222222,
+        "recall_after": 0.8222222222222222,
+        "precision_before": 0.8666666666666667,
+        "precision_after": 0.8666666666666667,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "M02",
+        "difficulty": "medium",
+        "recall_before": 0.9722222222222222,
+        "recall_after": 0.9722222222222222,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "M03",
+        "difficulty": "medium",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "M04",
+        "difficulty": "medium",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "M05",
+        "difficulty": "medium",
+        "recall_before": 0.8214285714285714,
+        "recall_after": 0.8214285714285714,
+        "precision_before": 0.95,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.050000000000000044,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "M06",
+        "difficulty": "medium",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "M07",
+        "difficulty": "medium",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "H01",
+        "difficulty": "hard",
+        "recall_before": 0.7755102040816326,
+        "recall_after": 0.7755102040816326,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "H02",
+        "difficulty": "hard",
+        "recall_before": 0.868421052631579,
+        "recall_after": 0.868421052631579,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": false,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "H03",
+        "difficulty": "hard",
+        "recall_before": 0.975,
+        "recall_after": 0.975,
+        "precision_before": 0.8875,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.11250000000000004,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "H04",
+        "difficulty": "hard",
+        "recall_before": 1.0,
+        "recall_after": 1.0,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "H05",
+        "difficulty": "hard",
+        "recall_before": 0.9347826086956522,
+        "recall_after": 0.9347826086956522,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "A01",
+        "difficulty": "adversarial",
+        "recall_before": 0.16129032258064516,
+        "recall_after": 0.16129032258064516,
+        "precision_before": 0.0,
+        "precision_after": 0.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "A02",
+        "difficulty": "adversarial",
+        "recall_before": 0.7727272727272727,
+        "recall_after": 0.7727272727272727,
+        "precision_before": 1.0,
+        "precision_after": 1.0,
+        "order_changed": true,
+        "delta_precision": 0.0,
+        "delta_recall": 0.0
+      },
+      {
+        "id": "A03",
+        "difficulty": "adversarial",
+        "recall_before": 0.35555555555555557,
+        "recall_after": 0.35555555555555557,
+        "precision_before": 0.6791666666666667,
+        "precision_after": 0.95,
+        "order_changed": true,
+        "delta_precision": 0.27083333333333326,
+        "delta_recall": 0.0
+      }
+    ],
+    "summary": {
+      "cases": 20,
+      "order_changed": 18,
+      "avg_recall_before": 0.8729580016072676,
+      "avg_recall_after": 0.8729580016072676,
+      "avg_precision_before": 0.9110416666666665,
+      "avg_precision_after": 0.9408333333333333,
+      "improved": 5,
+      "unchanged": 15,
+      "worsened": 0,
+      "recall_changed": 0,
+      "avg_delta_precision": 0.029791666666666772
+    }
+  },
+  "exercise_3_4_framework_comparison": {
+    "rows": [
+      {
+        "id": "E01",
+        "difficulty": "easy",
+        "lexical_overall": 0.8888888888888888,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "E02",
+        "difficulty": "easy",
+        "lexical_overall": 0.9393939393939394,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "E03",
+        "difficulty": "easy",
+        "lexical_overall": 0.7770370370370371,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "E04",
+        "difficulty": "easy",
+        "lexical_overall": 0.693355119825708,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "E05",
+        "difficulty": "easy",
+        "lexical_overall": 0.714484126984127,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "M01",
+        "difficulty": "medium",
+        "lexical_overall": 0.5707671957671957,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "M02",
+        "difficulty": "medium",
+        "lexical_overall": 0.5587121212121212,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "M03",
+        "difficulty": "medium",
+        "lexical_overall": 0.686936936936937,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "M04",
+        "difficulty": "medium",
+        "lexical_overall": 0.5288299663299664,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "M05",
+        "difficulty": "medium",
+        "lexical_overall": 0.5463980463980463,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "M06",
+        "difficulty": "medium",
+        "lexical_overall": 0.7158119658119658,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "M07",
+        "difficulty": "medium",
+        "lexical_overall": 0.7891963109354414,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "H01",
+        "difficulty": "hard",
+        "lexical_overall": 0.6184617387624907,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "H02",
+        "difficulty": "hard",
+        "lexical_overall": 0.70622009569378,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 0.75,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 0.75
+        },
+        "judge_overall": 0.9,
+        "judge_passed": true
+      },
+      {
+        "id": "H03",
+        "difficulty": "hard",
+        "lexical_overall": 0.7275462962962962,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 0.75,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 0.95,
+        "judge_passed": true
+      },
+      {
+        "id": "H04",
+        "difficulty": "hard",
+        "lexical_overall": 0.8300207039337474,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 0.75,
+          "condition_completeness": 0.75,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 0.9,
+        "judge_passed": true
+      },
+      {
+        "id": "H05",
+        "difficulty": "hard",
+        "lexical_overall": 0.6719011501620198,
+        "lexical_passed": true,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "A01",
+        "difficulty": "adversarial",
+        "lexical_overall": 0.052582753531520136,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 0.75
+        },
+        "judge_overall": 0.95,
+        "judge_passed": true
+      },
+      {
+        "id": "A02",
+        "difficulty": "adversarial",
+        "lexical_overall": 0.22424242424242424,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      },
+      {
+        "id": "A03",
+        "difficulty": "adversarial",
+        "lexical_overall": 0.38222222222222224,
+        "lexical_passed": false,
+        "judge_scores": {
+          "policy_correctness": 1.0,
+          "condition_completeness": 1.0,
+          "grounding": 1.0,
+          "scope_and_safety": 1.0,
+          "actionability": 1.0
+        },
+        "judge_overall": 1.0,
+        "judge_passed": true
+      }
+    ],
+    "summary": {
+      "model": "gpt-4o-mini",
+      "avg_lexical_overall": 0.6311504520182938,
+      "avg_judge_overall": 0.985,
+      "lexical_pass_rate": 0.5,
+      "judge_pass_rate": 1.0,
+      "pass_fail_agreement": 0.5,
+      "correlation": -0.02454564249267541,
+      "lexical_only_failures": [
+        "A01",
+        "A02",
+        "A03",
+        "E05",
+        "H01",
+        "M01",
+        "M02",
+        "M04",
+        "M05",
+        "M06"
+      ],
+      "judge_only_failures": [],
+      "shared_failures": [],
+      "bias_report": {
+        "positional_bias": false,
+        "leniency_bias": true,
+        "severity_bias": false
+      }
+    }
+  },
+  "bias_probe": {
+    "rows": [
+      {
+        "id": "E01",
+        "concise_first_winner": "padded",
+        "padded_first_winner": "padded"
+      },
+      {
+        "id": "E02",
+        "concise_first_winner": "padded",
+        "padded_first_winner": "padded"
+      },
+      {
+        "id": "E03",
+        "concise_first_winner": "padded",
+        "padded_first_winner": "padded"
+      },
+      {
+        "id": "E04",
+        "concise_first_winner": "padded",
+        "padded_first_winner": "padded"
+      },
+      {
+        "id": "E05",
+        "concise_first_winner": "padded",
+        "padded_first_winner": "padded"
+      },
+      {
+        "id": "M01",
+        "concise_first_winner": "padded",
+        "padded_first_winner": "padded"
+      }
+    ],
+    "summary": {
+      "model": "gpt-4o-mini",
+      "cases": 6,
+      "position_bias_cases": 0,
+      "verbosity_bias_cases": 6
+    }
+  }
+}
